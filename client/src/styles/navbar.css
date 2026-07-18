@@ -1,0 +1,50 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px;
+    background: white;
+}
+.Left-Navbar h1{
+    color: black;
+    font-size: 50px;
+    margin-bottom: 6px;
+}
+.Left-Navbar p{
+    color: gray;
+    font-size: 15px;
+}
+.Right-Navbar {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+.nav-icons{
+    font-size:24px;
+    cursor:pointer;
+    color:#1e293b;
+}
+
+.Profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+}
+
+.Profile img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+}
+
+.profile-text h4{
+    margin:0;
+    font-size:18px;
+}
+
+.profile-text p{
+    margin:0;
+    color:gray;
+    font-size:14px;
+}
