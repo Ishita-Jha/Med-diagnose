@@ -1,11 +1,12 @@
 import Navbar from "./components/navbar";
 import Login from "./pages/login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <div>
-      <Navbar/>
+      <Dashboard/>
       <Login />
       <Register/>
 
