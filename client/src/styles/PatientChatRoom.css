@@ -1,0 +1,190 @@
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* 📐 INCREASED LENGTH/WIDTH: bumped up to 650px to stretch the card out */
+  max-width: 450px; 
+  height: 750px;
+  margin: 20px auto;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-align: left; /* Forces standard left-alignment across the app */
+}
+
+/* Profile Card Styling */
+.profileCard {
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Space between avatar and text */
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #fee2e2;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns patient name and age to the left */
+}
+
+.patientName {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.patientMeta {
+  margin: 2px 0 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.complaintBox {
+  background-color: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  text-align: left; /* Ensures complaint is left aligned */
+}
+
+.complaintLabel {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.complaintText {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #334155;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Chat Log Area */
+.chatWindow {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #f1f5f9; /* Contrast background for the chat feed */
+}
+
+.messageRow {
+  display: flex;
+  width: 100%;
+}
+
+.rowDoctor {
+  justify-content: flex-end;
+}
+
+.rowPatient {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-widxth: 75%;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.bubbleDoctor {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-top-right-radius: 0;
+}
+
+.bubblePatient {
+  background-color: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-top-left-radius: 0;
+}
+
+.bubbleSender {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  opacity: 0.8;
+}
+
+.bubble p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Form inputs */
+.inputForm {
+  display: flex;
+  padding: 16px;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  gap: 12px;
+}
+
+.inputField {
+  flex: 1;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.inputField:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.sendButton {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sendButton:hover {
+  background-color: #1d4ed8;
+}
