@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import PatientChatRoom from "./pages/PatientChatRoom";
 import OrderTest from './pages/OrderTest';
 import OrderedTest from './pages/orderedTest';
+import LaboratoryResults from "./pages/LaboratoryResults"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <PatientChatRoom/>
       <OrderTest/>
       <OrderedTest/>
+      <LaboratoryResults/>
 
     </div>
     
