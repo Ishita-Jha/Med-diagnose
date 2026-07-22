@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   /* 📐 INCREASED LENGTH/WIDTH: bumped up to 650px to stretch the card out */
-  max-width: 450px; 
+  max-width: 500px; 
   height: 750px;
   margin: 20px auto;
   background-color: #f8fafc;
@@ -12,7 +12,31 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   font-family: system-ui, -apple-system, sans-serif;
-  text-align: left; /* Forces standard left-alignment across the app */
+  /* text-align: left; Forces standard left-alignment across the app */
+}
+
+.topSection{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:20px;
+    background:white;
+    border-bottom:1px solid #e2e8f0;
+    gap:20px;
+}
+
+.profileCard{
+    flex:1;
+    padding:0;
+    border:none;
+    background:transparent;
+}
+
+.topButtons{
+    width:180px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
 }
 
 /* Profile Card Styling */
@@ -114,7 +138,7 @@
 }
 
 .bubble {
-  max-widxth: 75%;
+  max-width: 75%;
   border-radius: 12px;
   padding: 12px 16px;
   font-size: 0.9rem;
@@ -187,4 +211,36 @@
 
 .sendButton:hover {
   background-color: #1d4ed8;
+}
+
+/* Chat + Right Panel */
+/* Chat takes remaining space */
+
+
+.actionButton {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.orderButton {
+    background: #2563eb;
+    color: white;
+}
+
+.orderButton:hover {
+    background: #1d4ed8;
+}
+
+.summaryButton {
+    background: #10b981;
+    color: white;
+}
+
+.summaryButton:hover {
+    background: #059669;
 }

@@ -44,54 +44,96 @@ export default function PatientChatRoom() {
 
   return (
     <div className="chatContainer">
-      
-      {/* PATIENT PROFILE CARD */}
-      <div className="profileCard">
-        <div className="profileHeader">
-          <div className="avatar">B</div>
-          <div className="profileText">
-            <h3 className="patientName">{patientProfile.name}</h3>
-            <p className="patientMeta">Age: {patientProfile.age} • Female</p>
-          </div>
-        </div>
-        <div className="complaintBox">
-          <span className="complaintLabel">Patient Complaint</span>
-          <p className="complaintText">"{patientProfile.complaint}"</p>
+
+  {/* TOP SECTION */}
+  <div className="topSection">
+
+    {/* PROFILE */}
+    <div className="profileCard">
+      <div className="profileHeader">
+        <div className="avatar">B</div>
+
+        <div className="profileText">
+          <h3 className="patientName">{patientProfile.name}</h3>
+          <p className="patientMeta">
+            Age: {patientProfile.age} • Female
+          </p>
         </div>
       </div>
 
-      {/* CHAT INTERFACE WINDOW */}
-      <div className="chatWindow">
-        {messages.map((msg) => (
-          <div 
-            key={msg.id} 
-            className={`$messageRow ${msg.sender === 'doctor' ? 'rowDoctor' : 'rowPatient'}`}
-          >
-            <div 
-              className={`$bubble ${msg.sender === 'doctor' ? 'bubbleDoctor' : 'bubblePatient'}`}
-            >
-              <span className="bubbleSender">
-                {msg.sender === 'doctor' ? '👨‍⚕️ You (Doctor)' : '🤒 Patient'}
-              </span>
-              <p>{msg.text}</p>
-            </div>
-          </div>
-        ))}
-        <div ref={chatEndRef} />
+      <div className="complaintBox">
+        <span className="complaintLabel">Patient Complaint</span>
+        <p className="complaintText">
+          "{patientProfile.complaint}"
+        </p>
       </div>
-
-      {/* INPUT FORM */}
-      <form onSubmit={handleSendMessage} className="inputForm">
-        <input 
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Ask the patient a clinical question..."
-          className="inputField"
-        />
-        <button type="submit" className="sendButton">Send</button>
-      </form>
-
     </div>
+
+    {/* BUTTONS */}
+    <div className="topButtons">
+      <button
+        className="actionButton orderButton"
+        onClick={() => alert("Navigate to Order Test Page")}
+      >
+        🧪 Order Test
+      </button>
+
+      <button
+        className="actionButton summaryButton"
+        onClick={() => alert("Navigate to Summary Page")}
+      >
+        📋 View Summary
+      </button>
+    </div>
+
+  </div>
+
+  {/* CHAT WINDOW */}
+  <div className="chatWindow">
+    {messages.map((msg) => (
+      <div
+        key={msg.id}
+        className={`messageRow ${
+          msg.sender === "doctor" ? "rowDoctor" : "rowPatient"
+        }`}
+      >
+        <div
+          className={`bubble ${
+            msg.sender === "doctor"
+              ? "bubbleDoctor"
+              : "bubblePatient"
+          }`}
+        >
+          <span className="bubbleSender">
+            {msg.sender === "doctor"
+              ? "👨‍⚕️ You (Doctor)"
+              : "🤒 Patient"}
+          </span>
+
+          <p>{msg.text}</p>
+        </div>
+      </div>
+    ))}
+
+    <div ref={chatEndRef}></div>
+  </div>
+
+  {/* INPUT */}
+  <form onSubmit={handleSendMessage} className="inputForm">
+    <input
+      type="text"
+      value={inputValue}
+      onChange={(e) => setInputValue(e.target.value)}
+      placeholder="Ask the patient a clinical question..."
+      className="inputField"
+    />
+
+    <button type="submit" className="sendButton">
+      Send
+    </button>
+  </form>
+
+</div>
   );
+
 }
