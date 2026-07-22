@@ -4,6 +4,8 @@ import Login from "./pages/login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import PatientChatRoom from "./pages/PatientChatRoom";
+import OrderTest from './pages/OrderTest';
+import OrderedTest from './pages/orderedTest';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Login />
       <Register/>
       <PatientChatRoom/>
+      <OrderTest/>
+      <OrderedTest/>
 
     </div>
     
