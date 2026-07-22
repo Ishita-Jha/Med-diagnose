@@ -7,6 +7,8 @@ import PatientChatRoom from "./pages/PatientChatRoom";
 import OrderTest from './pages/OrderTest';
 import OrderedTest from './pages/orderedTest';
 import LaboratoryResults from "./pages/LaboratoryResults"
+import SummaryPage from "./pages/SummaryPage";
+import DiagnosisPage from "./pages/DiagnosisPage";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <OrderTest/>
       <OrderedTest/>
       <LaboratoryResults/>
+      <SummaryPage/>
+      <DiagnosisPage/>
 
     </div>
     
