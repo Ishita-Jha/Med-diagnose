@@ -10,6 +10,7 @@ import LaboratoryResults from "./pages/LaboratoryResults"
 import SummaryPage from "./pages/SummaryPage";
 import DiagnosisPage from "./pages/DiagnosisPage";
 import { Routes, Route} from "react-router-dom";
+import Profile from './pages/profile';
 
 // function App() {
 //   return (
@@ -49,6 +50,7 @@ function App() {
       <Route path="/summary" element={<SummaryPage />} />
 
       <Route path="/diagnosis" element={<DiagnosisPage />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

@@ -55,17 +55,18 @@ function Dashboard() {
                     <p>Generate a new AI patient and begin your diagnosis.</p>
                 </div>
                 
-                <div className="feature-card">
+                {/* <div className="feature-card">
                     <MdHistory className="feature-icon" />
                     <h2>Case History</h2>
                     <p>View your past cases and performance.</p>
-                </div>
+                </div> */}
                 <div className="feature-card">
                     <FaChartBar className="feature-icon" />
                     <h2>Performance</h2>
                     <p>Analyze your strengths and improve more.</p>
                 </div>
-                <div className="feature-card">
+                <div  onClick={() => navigate("/profile")}
+                    style={{ cursor: "pointer" }} className="feature-card">
                     <FaUserCircle className="feature-icon" />
                     <h2>My Profile</h2>
                     <p>Manage your profile and preferences.</p>
