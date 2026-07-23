@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "../styles/dashboard.css"
 import Navbar from "../components/navbar"
 import { FaUserMd } from "react-icons/fa";
@@ -6,8 +6,20 @@ import { MdHistory } from "react-icons/md";
 import { FaChartBar } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import API from "../services/api";
 
 function Dashboard() {
+    useEffect(() => {
+        console.log("Dashboard Loaded");
+
+        API.get("/api/test")
+            .then((res) => {
+                console.log("Backend Response:", res.data);
+            })
+            .catch((err) => {
+                console.error("Backend Error:", err);
+            });
+    }, []);
     const [s_cases, setS_cases] = useState(12)
     const [A_score, setA_score] = useState(88)
     const [b_score, setb_score] = useState(97)
