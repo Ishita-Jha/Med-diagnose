@@ -9,26 +9,9 @@ import OrderedTest from './pages/orderedTest';
 import LaboratoryResults from "./pages/LaboratoryResults"
 import SummaryPage from "./pages/SummaryPage";
 import DiagnosisPage from "./pages/DiagnosisPage";
+import LoadingResults from "./pages/LoadingResults";
 import { Routes, Route} from "react-router-dom";
-import Profile from './pages/profile';
 
-// function App() {
-//   return (
-//     <div>
-//       <Dashboard/>
-//       <Login />
-//       <Register/>
-//       <PatientChatRoom/>
-//       <OrderTest/>
-//       <OrderedTest/>
-//       <LaboratoryResults/>
-//       <SummaryPage/>
-//       <DiagnosisPage/>
-
-//     </div>
-    
-//   );
-// }
 
 function App() {
   return (
@@ -50,7 +33,8 @@ function App() {
       <Route path="/summary" element={<SummaryPage />} />
 
       <Route path="/diagnosis" element={<DiagnosisPage />} />
-      <Route path="/profile" element={<Profile />} />
+
+      <Route path="/loading-results" element={<LoadingResults/>} />
     </Routes>
   );
 }

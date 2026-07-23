@@ -34,7 +34,7 @@ const OrderedTest = () => {
             </div>
             <button
                 className="Result"
-                onClick={() => navigate("/lab-results")}
+                onClick={() => navigate("/loading-results")}
             >
                 Generate Results
             </button>
