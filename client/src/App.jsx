@@ -9,22 +9,47 @@ import OrderedTest from './pages/orderedTest';
 import LaboratoryResults from "./pages/LaboratoryResults"
 import SummaryPage from "./pages/SummaryPage";
 import DiagnosisPage from "./pages/DiagnosisPage";
+import { Routes, Route} from "react-router-dom";
+
+// function App() {
+//   return (
+//     <div>
+//       <Dashboard/>
+//       <Login />
+//       <Register/>
+//       <PatientChatRoom/>
+//       <OrderTest/>
+//       <OrderedTest/>
+//       <LaboratoryResults/>
+//       <SummaryPage/>
+//       <DiagnosisPage/>
+
+//     </div>
+    
+//   );
+// }
 
 function App() {
   return (
-    <div>
-      <Dashboard/>
-      <Login />
-      <Register/>
-      <PatientChatRoom/>
-      <OrderTest/>
-      <OrderedTest/>
-      <LaboratoryResults/>
-      <SummaryPage/>
-      <DiagnosisPage/>
+    <Routes>
+      <Route path="/" element={<Login />} />
 
-    </div>
-    
+      <Route path="/register" element={<Register />} />
+
+      <Route path="/dashboard" element={<Dashboard />} />
+
+      <Route path="/patient-chat" element={<PatientChatRoom />} />
+
+      <Route path="/order-test" element={<OrderTest />} />
+
+      <Route path="/ordered-test" element={<OrderedTest />} />
+
+      <Route path="/lab-results" element={<LaboratoryResults />} />
+
+      <Route path="/summary" element={<SummaryPage />} />
+
+      <Route path="/diagnosis" element={<DiagnosisPage />} />
+    </Routes>
   );
 }
 

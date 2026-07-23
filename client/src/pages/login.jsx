@@ -1,6 +1,13 @@
 import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/dashboard");
+  };
   return (
     <div className="login-container">
       <div className="login-box">
@@ -8,7 +15,7 @@ function Login() {
         <h1>Med Diagnose</h1>
         <p>Welcome Back</p>
 
-        <form>
+        <form onSubmit = {handleLogin}>
 
           <input
             type="email"
@@ -28,7 +35,17 @@ function Login() {
 
         <p className="register-text">
           Don't have an account?
-          <a href="#"> Register</a>
+          {/* <a href="#"> Register</a> */}
+          <span
+            onClick={() => navigate("/register")}
+            style={{
+              color: "#4a6cf7",
+              cursor: "pointer",
+              fontWeight: "bold"
+            }}
+          >
+            Register
+          </span>
         </p>
 
       </div>
