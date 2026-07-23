@@ -13,6 +13,13 @@ app.get("/", (req, res) => {
     message: "Med-Diagnose Backend Running 🚀"
   });
 });
+// Test Route
+app.get("/api/test", (req, res) => {
+  res.json({
+    success: true,
+    message: "Backend Connected Successfully"
+  });
+});
 
 const PORT = process.env.PORT || 5000;
 
