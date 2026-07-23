@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const OrderTest = () => {
     const navigate = useNavigate();
     const [category, setCategory] = useState("commonTests")
+    const [selectedTests, setSelectedTests] = useState([]);
     let tests = [];
 
     const commonTests = [
@@ -42,6 +43,17 @@ const OrderTest = () => {
     } else {
         tests = advancedTests;
     }
+
+    const handleCheckboxChange = (test) => {
+        if (selectedTests.includes(test)) {
+            setSelectedTests(
+                selectedTests.filter((item) => item !== test)
+            );
+        } else {
+            setSelectedTests([...selectedTests, test]);
+        }
+    };
+
     return (
         <div className="orderTest-list">
             <div className="Header">
@@ -60,7 +72,12 @@ const OrderTest = () => {
                     tests.map((tests) => {
                         return (
                             <label>
-                                <input type="checkbox" />
+                                {/* <input type="checkbox" /> */}
+                                <input
+                                    type="checkbox"
+                                    checked={selectedTests.includes(tests)}
+                                    onChange={() => handleCheckboxChange(tests)}
+                                />
                                 {tests}
                             </label>
                         )
@@ -71,9 +88,23 @@ const OrderTest = () => {
             {/* <button className="order-btn">
                 Order Selected Tests
             </button> */}
-            <button
+            {/* <button
                 className="order-btn"
                 onClick={() => navigate("/ordered-test")}
+            >
+                Order Selected Tests
+            </button> */}
+            <button
+                className="order-btn"
+                onClick={() => {
+
+                    localStorage.setItem(
+                        "selectedTests",
+                        JSON.stringify(selectedTests)
+                    );
+
+                    navigate("/ordered-test");
+                }}
             >
                 Order Selected Tests
             </button>

@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 const OrderedTest = () => {
     const navigate = useNavigate();
-    const selectedTests = [
-        "Complete Blood Count",
-        "ECG",
-        "Blood Sugar"
-    ];
+    // const selectedTests = [
+    //     "Complete Blood Count",
+    //     "ECG",
+    //     "Blood Sugar"
+    // ];
+    const selectedTests =
+    JSON.parse(localStorage.getItem("selectedTests")) || [];
     const [status, SetStatus] = useState("Pending")
     return (
         <div className="Test-Summary">
@@ -18,10 +20,11 @@ const OrderedTest = () => {
             </div>
             <div className="selectedTests-list">
                 {
-                    selectedTests.map((selectedTests) => {
+                    selectedTests.map((test, index) => {
                         return (
-                            <div className="selected">
-                                {selectedTests}
+                            <div className="selected" key={index}>
+                                <h3>{test}</h3>
+                                {/* {selectedTests} */}
                                 <p>Status: {status}</p>
                             </div>
                         )
