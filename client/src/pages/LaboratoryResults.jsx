@@ -1,6 +1,8 @@
 import "../styles/LaboratoryResults.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LaboratoryResults() {
+  const navigate = useNavigate();
   return (
     <div className="lab-page">
       <div className="lab-container">
@@ -72,7 +74,10 @@ export default function LaboratoryResults() {
           </div>
         </div>
 
-        <button className="continue-btn">
+        <button
+          className="continue-btn"
+          onClick={() => navigate("/summary")}
+        >
           View Summary
         </button>
 

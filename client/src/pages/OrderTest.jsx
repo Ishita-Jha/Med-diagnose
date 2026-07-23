@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import "../styles/orderTest.css"
+import { useNavigate } from "react-router-dom";
 
 const OrderTest = () => {
+    const navigate = useNavigate();
     const [category, setCategory] = useState("commonTests")
     let tests = [];
 
@@ -32,7 +34,7 @@ const OrderTest = () => {
         "Autoimmune Panel",
         "PCR Test"
     ];
-    
+
     if (category === "commonTests") {
         tests = commonTests;
     } else if (category === "imagingTests") {
@@ -66,7 +68,13 @@ const OrderTest = () => {
                     )
                 }
             </div>
-           <button className="order-btn">
+            {/* <button className="order-btn">
+                Order Selected Tests
+            </button> */}
+            <button
+                className="order-btn"
+                onClick={() => navigate("/ordered-test")}
+            >
                 Order Selected Tests
             </button>
 

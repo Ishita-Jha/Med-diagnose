@@ -1,6 +1,8 @@
 import "../styles/SummaryPage.css";
+import { useNavigate } from "react-router-dom";
 
 function SummaryPage() {
+  const navigate = useNavigate();
   return (
     <div className="summary-page">
       <div className="summary-container">
@@ -83,7 +85,7 @@ function SummaryPage() {
           </div>
         </div>
 
-        
+
         {/* Notes */}
         <div className="summary-card">
           <h2>📝 Clinical Notes</h2>
@@ -94,10 +96,12 @@ function SummaryPage() {
           ></textarea>
         </div>
 
-        <button className="continue-btn">
+        <button
+          className="continue-btn"
+          onClick={() => navigate("/diagnosis")}
+        >
           Continue to Diagnosis
         </button>
-
       </div>
     </div>
   );

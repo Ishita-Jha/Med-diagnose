@@ -5,17 +5,20 @@ import { FaUserMd } from "react-icons/fa";
 import { MdHistory } from "react-icons/md";
 import { FaChartBar } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 function Dashboard() {
     const [s_cases, setS_cases] = useState(12)
     const [A_score, setA_score] = useState(88)
     const [b_score, setb_score] = useState(97)
     const [c_level, setc_level] = useState("Beginner")
+    const navigate = useNavigate();
     return (
         <div className="Dashboard">
             <Navbar />
             <div className="cards">
                 <div className="card_1">
-                    
+
                     <h3>Cases solved</h3>
                     <h1>{s_cases}</h1>
                     <p>Total cases</p>
@@ -37,11 +40,21 @@ function Dashboard() {
                 </div>
             </div>
             <div className="features">
-                <div className="feature-card">
+                {/* <div className="feature-card">
                     <FaUserMd className="feature-icon" />
                     <h2>Start New Case</h2>
                     <p>Generate a new AI patient and begin your daignosis.</p>
+                </div> */}
+                <div
+                    className="feature-card"
+                    onClick={() => navigate("/patient-chat")}
+                    style={{ cursor: "pointer" }}
+                >
+                    <FaUserMd className="feature-icon" />
+                    <h2>Start New Case</h2>
+                    <p>Generate a new AI patient and begin your diagnosis.</p>
                 </div>
+                
                 <div className="feature-card">
                     <MdHistory className="feature-icon" />
                     <h2>Case History</h2>

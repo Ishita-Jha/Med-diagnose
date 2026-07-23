@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/PatientChatRoom.css'; // Importing our plain CSS file
+import { useNavigate } from "react-router-dom";
 
 export default function PatientChatRoom() {
   const [patientProfile, setPatientProfile] = useState({
@@ -41,6 +42,7 @@ export default function PatientChatRoom() {
       setMessages(prev => [...prev, patientMessage]);
     }, 800);
   };
+  const navigate = useNavigate();
 
   return (
     <div className="chatContainer">
@@ -73,14 +75,14 @@ export default function PatientChatRoom() {
     <div className="topButtons">
       <button
         className="actionButton orderButton"
-        onClick={() => alert("Navigate to Order Test Page")}
+        onClick={() => navigate("/order-test")}
       >
         🧪 Order Test
       </button>
 
       <button
         className="actionButton summaryButton"
-        onClick={() => alert("Navigate to Summary Page")}
+        onClick={() => navigate("/summary")}
       >
         📋 View Summary
       </button>

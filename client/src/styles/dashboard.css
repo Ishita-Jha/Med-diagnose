@@ -66,6 +66,17 @@
     border-radius: 25px;
 
 }
+
+.feature-card {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
 .card_4 h1{
     color: black;
 }

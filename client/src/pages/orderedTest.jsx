@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import "../styles/orderedTest.css"
+import { useNavigate } from "react-router-dom";
 
 const OrderedTest = () => {
+    const navigate = useNavigate();
     const selectedTests = [
         "Complete Blood Count",
         "ECG",
         "Blood Sugar"
     ];
-    const [status,SetStatus]=useState("Pending")
+    const [status, SetStatus] = useState("Pending")
     return (
         <div className="Test-Summary">
             <div className="Header">
@@ -24,15 +26,15 @@ const OrderedTest = () => {
                             </div>
                         )
                     }
-                )
+                    )
                 }
             </div>
-            <button className="Result">
+            <button
+                className="Result"
+                onClick={() => navigate("/lab-results")}
+            >
                 Generate Results
             </button>
-            
-
-
         </div>
     )
 }
