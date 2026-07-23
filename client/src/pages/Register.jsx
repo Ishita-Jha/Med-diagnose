@@ -111,7 +111,7 @@ function Register() {
             </div>
           </div>
 
-          <button type="submit" className="register-btn">Create Practice Profile</button>
+          <button type="submit" className="register-btn">Proceed to Login</button>
         </form>
 
         {message.text && (
