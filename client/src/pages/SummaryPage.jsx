@@ -1,10 +1,12 @@
 import "../styles/SummaryPage.css";
 import { useNavigate } from "react-router-dom";
+import Timer from "../components/Timer.jsx";
 
 function SummaryPage() {
   const navigate = useNavigate();
   return (
     <div className="summary-page">
+      <Timer/>
       <div className="summary-container">
 
         <h1>Case Summary</h1>

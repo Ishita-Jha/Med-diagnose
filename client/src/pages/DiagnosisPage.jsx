@@ -1,8 +1,10 @@
 import "../styles/DiagnosisPage.css";
-
+import Timer from "../components/Timer.jsx";
 function DiagnosisPage() {
+
   return (
     <div className="diagnosis-page">
+      <Timer />
       <div className="diagnosis-container">
 
         <h1>Final Diagnosis</h1>
@@ -62,7 +64,11 @@ function DiagnosisPage() {
           ></textarea>
         </div>
 
-        <button className="submit-btn">
+        <button onClick={() => {
+          localStorage.removeItem("caseStartTime");
+
+          navigate("/evaluation");
+        }} className="submit-btn">
           Submit Case
         </button>
 

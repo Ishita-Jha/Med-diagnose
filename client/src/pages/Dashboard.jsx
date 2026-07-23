@@ -47,14 +47,17 @@ function Dashboard() {
                 </div> */}
                 <div
                     className="feature-card"
-                    onClick={() => navigate("/patient-chat")}
+                    onClick={() => {
+                        localStorage.setItem("caseStartTime", Date.now());
+                        navigate("/patient-chat");
+                    }}
                     style={{ cursor: "pointer" }}
                 >
                     <FaUserMd className="feature-icon" />
                     <h2>Start New Case</h2>
                     <p>Generate a new AI patient and begin your diagnosis.</p>
                 </div>
-                
+
                 {/* <div className="feature-card">
                     <MdHistory className="feature-icon" />
                     <h2>Case History</h2>
@@ -65,7 +68,7 @@ function Dashboard() {
                     <h2>Performance</h2>
                     <p>Analyze your strengths and improve more.</p>
                 </div>
-                <div  onClick={() => navigate("/profile")}
+                <div onClick={() => navigate("/profile")}
                     style={{ cursor: "pointer" }} className="feature-card">
                     <FaUserCircle className="feature-icon" />
                     <h2>My Profile</h2>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "../styles/orderedTest.css"
 import { useNavigate } from "react-router-dom";
+import Timer from "../components/Timer.jsx";
 
 const OrderedTest = () => {
     const navigate = useNavigate();
@@ -14,6 +15,7 @@ const OrderedTest = () => {
     const [status, SetStatus] = useState("Pending")
     return (
         <div className="Test-Summary">
+            <Timer/>
             <div className="Header">
                 <h2>Ordered Tests</h2>
                 <p> These tests have been orderd for this patient.</p>

@@ -1,10 +1,12 @@
 import "../styles/LaboratoryResults.css";
 import { useNavigate } from "react-router-dom";
+import Timer from "../components/Timer.jsx";
 
 export default function LaboratoryResults() {
   const navigate = useNavigate();
   return (
     <div className="lab-page">
+      <Timer/>
       <div className="lab-container">
 
         <h1>Laboratory Results</h1>

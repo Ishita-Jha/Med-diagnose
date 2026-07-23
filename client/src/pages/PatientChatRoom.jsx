@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/PatientChatRoom.css'; // Importing our plain CSS file
 import { useNavigate } from "react-router-dom";
+import Timer from "../components/Timer.jsx";
 
 export default function PatientChatRoom() {
   const [patientProfile, setPatientProfile] = useState({
@@ -49,6 +50,7 @@ export default function PatientChatRoom() {
 
   {/* TOP SECTION */}
   <div className="topSection">
+    <Timer/>
 
     {/* PROFILE */}
     <div className="profileCard">
