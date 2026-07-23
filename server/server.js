@@ -1,3 +1,4 @@
+const doctorRoutes = require("./routes/doctorRoutes");
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
