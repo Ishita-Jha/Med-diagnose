@@ -25,6 +25,23 @@ function Dashboard() {
     const [b_score, setb_score] = useState(97)
     const [c_level, setc_level] = useState("Beginner")
     const navigate = useNavigate();
+    const startNewCase = async () => {
+        try {
+            const response = await API.get("/api/patient/generate");
+
+            localStorage.setItem(
+                "currentPatient",
+                JSON.stringify(response.data.patient)
+            );
+
+            localStorage.setItem("caseStartTime", Date.now());
+
+            navigate("/patient-chat");
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <div className="Dashboard">
             <Navbar />
@@ -59,10 +76,7 @@ function Dashboard() {
                 </div> */}
                 <div
                     className="feature-card"
-                    onClick={() => {
-                        localStorage.setItem("caseStartTime", Date.now());
-                        navigate("/patient-chat");
-                    }}
+                    onClick={() => startNewCase()}
                     style={{ cursor: "pointer" }}
                 >
                     <FaUserMd className="feature-icon" />
