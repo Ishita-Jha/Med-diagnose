@@ -5,17 +5,28 @@ const registerUser = async (req, res) => {
     const {
       fullName,
       medicalCollege,
-      yearOfStudy,
       specialtyInterest,
+      email,
+      password,
+      confirmPassword,
     } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Passwords do not match",
+      });
+    }
 
     const user = new User({
       fullName,
       medicalCollege,
-      yearOfStudy,
       specialtyInterest,
+      email,
+      password,
     });
 
+    
     await user.save();
 
     res.status(201).json({

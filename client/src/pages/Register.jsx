@@ -4,16 +4,24 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
+  // const [formData, setFormData] = useState({
+  //   fullName: '',
+  //   medicalCollege: '',
+  //   yearOfStudy: '',
+  //   specialtyInterest: ''
+  // });
   const [formData, setFormData] = useState({
     fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
     medicalCollege: '',
-    yearOfStudy: '',
-    specialtyInterest: ''
+    specialtyInterest: '',
   });
 
   const [message, setMessage] = useState({ text: '', type: '' });
 
-  const handleChange = async (e) => {
+  const handleChange =  (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -24,30 +32,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // localStorage.setItem('studentDoctorProfile', JSON.stringify({
-    //   fullName: formData.fullName,
-    //   medicalCollege: formData.medicalCollege,
-    //   yearOfStudy: formData.yearOfStudy,
-    //   specialtyInterest: formData.specialtyInterest,
-    //   accuracyScore: 100,
-    //   casesSolved: 0
-    // }));
 
-    // setMessage({
-    //   text: `Welcome, Dr. ${formData.fullName}! Your practice profile is configured.`,
-    //   type: 'success'
-    // });
-
-    // setFormData({
-    //   fullName: '',
-    //   medicalCollege: '',
-    //   yearOfStudy: '',
-    //   specialtyInterest: ''
-    // });
-
-    // setTimeout(() => {
-    //   navigate("/");
-    // }, 1500);
     try {
       const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
@@ -61,7 +46,7 @@ function Register() {
 
       if (data.success) {
         setMessage({
-          text: `Welcome, Dr. ${formData.fullName}! Your practice profile is configured.`,
+          text: `Welcome, Dr. ${formData.fullName}! Registration Successful.`,
           type: "success",
         });
 
@@ -114,6 +99,42 @@ function Register() {
           </div>
 
           <div className="input-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              placeholder="Create a password"
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+              placeholder="Confirm password"
+            />
+          </div>
+
+          <div className="input-group">
             <label>Medical College / University</label>
             <input
               type="text"
@@ -127,7 +148,7 @@ function Register() {
 
 
           <div className="form-row">
-            <div className="input-group standard-width">
+            {/* <div className="input-group standard-width">
               <label>Year of Study</label>
               <select
                 className="custom-select"
@@ -141,7 +162,7 @@ function Register() {
                 <option value="Final Year">Final Year</option>
                 <option value="Intern / Resident">Intern / Resident</option>
               </select>
-            </div>
+            </div> */}
 
             <div className="input-group standard-width">
               <label>Specialty Focus</label>

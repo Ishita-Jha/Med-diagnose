@@ -9,7 +9,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  yearOfStudy: {
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+
+  password: {
     type: String,
     required: true,
   },
@@ -17,6 +23,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  
   accuracyScore: {
     type: Number,
     default: 100,
