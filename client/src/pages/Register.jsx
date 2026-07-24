@@ -13,7 +13,7 @@ function Register() {
 
   const [message, setMessage] = useState({ text: '', type: '' });
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -21,33 +21,76 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    localStorage.setItem('studentDoctorProfile', JSON.stringify({
-      fullName: formData.fullName,
-      medicalCollege: formData.medicalCollege,
-      yearOfStudy: formData.yearOfStudy,
-      specialtyInterest: formData.specialtyInterest,
-      accuracyScore: 100,
-      casesSolved: 0
-    }));
+    // localStorage.setItem('studentDoctorProfile', JSON.stringify({
+    //   fullName: formData.fullName,
+    //   medicalCollege: formData.medicalCollege,
+    //   yearOfStudy: formData.yearOfStudy,
+    //   specialtyInterest: formData.specialtyInterest,
+    //   accuracyScore: 100,
+    //   casesSolved: 0
+    // }));
 
-    setMessage({
-      text: `Welcome, Dr. ${formData.fullName}! Your practice profile is configured.`,
-      type: 'success'
-    });
+    // setMessage({
+    //   text: `Welcome, Dr. ${formData.fullName}! Your practice profile is configured.`,
+    //   type: 'success'
+    // });
 
-    setFormData({
-      fullName: '',
-      medicalCollege: '',
-      yearOfStudy: '',
-      specialtyInterest: ''
-    });
+    // setFormData({
+    //   fullName: '',
+    //   medicalCollege: '',
+    //   yearOfStudy: '',
+    //   specialtyInterest: ''
+    // });
 
-    setTimeout(() => {
-      navigate("/");
-    }, 1500);
+    // setTimeout(() => {
+    //   navigate("/");
+    // }, 1500);
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setMessage({
+          text: `Welcome, Dr. ${formData.fullName}! Your practice profile is configured.`,
+          type: "success",
+        });
+
+        setFormData({
+          fullName: "",
+          medicalCollege: "",
+          yearOfStudy: "",
+          specialtyInterest: "",
+        });
+
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+
+      } else {
+        setMessage({
+          text: data.message,
+          type: "error",
+        });
+      }
+
+    } catch (error) {
+      console.error(error);
+
+      setMessage({
+        text: "Unable to connect to the server.",
+        type: "error",
+      });
+    }
   };
 
   return (
