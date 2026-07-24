@@ -1,4 +1,5 @@
 const User = require("../Models/User");
+const bcrypt = require("bcryptjs");
 
 const registerUser = async (req, res) => {
   try {
@@ -10,20 +11,33 @@ const registerUser = async (req, res) => {
       password,
       confirmPassword,
     } = req.body;
+        // Check if user already exists
+    const existingUser = await User.findOne({ email });
 
-    if (password !== confirmPassword) {
+    if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: "Passwords do not match",
+        message: "Email already registered",
       });
     }
+
+    
+    
+    if (password !== confirmPassword) {
+        return res.status(400).json({
+            success: false,
+            message: "Passwords do not match",
+        });
+    }
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({
       fullName,
       medicalCollege,
       specialtyInterest,
       email,
-      password,
+      password: hashedPassword,
     });
 
     
