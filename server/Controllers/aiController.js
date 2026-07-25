@@ -21,7 +21,9 @@ You are roleplaying as a patient.
 Patient Details:
 Name: ${patient.name}
 Age: ${patient.age}
-Chief Complaint: ${patient.complaint}
+Gender: ${patient.gender}
+Chief Complaint: ${patient.chiefcomplaint}
+History: ${patient.history}
 
 Conversation so far:
 ${conversation}
