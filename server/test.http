@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/ai/chat
+Content-Type: application/json
+
+{
+  "patient": {
+    "name": "Bhumi",
+    "age": 29,
+    "complaint": "Sudden shortness of breath and sharp chest pain."
+  },
+  "question": "When did your pain start?"
+}
