@@ -6,6 +6,7 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 connectDB();
 const authRoutes = require("./Routes/authroutes");
+const aiRoutes = require("./Routes/aiRoutes");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/patient", patientRoutes);
+app.use("/api/ai" , aiRoutes);
 
 
 // app.get("/", (req, res) => {

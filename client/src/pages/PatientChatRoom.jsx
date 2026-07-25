@@ -25,7 +25,7 @@ export default function PatientChatRoom() {
     }
   }, []);
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputValue.trim()) return;
 
@@ -33,19 +33,43 @@ export default function PatientChatRoom() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
 
-    setTimeout(() => {
-      let patientReplyText = "I'm not quite sure about that, doctor.";
-      const cleanInput = inputValue.toLowerCase();
+    // setTimeout(() => {
+    //   let patientReplyText = "I'm not quite sure about that, doctor.";
+    //   const cleanInput = inputValue.toLowerCase();
 
-      if (cleanInput.includes('start') || cleanInput.includes('when')) {
-        patientReplyText = "About two hours ago, right after I got off a long-haul flight from London.";
-      } else if (cleanInput.includes('hurt') || cleanInput.includes('where')) {
-        patientReplyText = "It's mostly on the right side of my chest, and it shoots up when I breathe in deeply.";
-      }
+    //   if (cleanInput.includes('start') || cleanInput.includes('when')) {
+    //     patientReplyText = "About two hours ago, right after I got off a long-haul flight from London.";
+    //   } else if (cleanInput.includes('hurt') || cleanInput.includes('where')) {
+    //     patientReplyText = "It's mostly on the right side of my chest, and it shoots up when I breathe in deeply.";
+    //   }
 
-      const patientMessage = { id: Date.now() + 1, sender: 'patient', text: patientReplyText };
-      setMessages(prev => [...prev, patientMessage]);
-    }, 800);
+    //   const patientMessage = { id: Date.now() + 1, sender: 'patient', text: patientReplyText };
+    //   setMessages(prev => [...prev, patientMessage]);
+    // }, 800);
+    try {
+      const response = await fetch("http://localhost:3000/api/ai/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: inputValue,
+        }),
+      });
+
+      const data = await response.json();
+
+      const patientMessage = {
+        id: Date.now(),
+        sender: "patient",
+        text: data.reply,
+      };
+
+      setMessages((prev) => [...prev, patientMessage]);
+
+    } catch (error) {
+      console.error(error);
+    }
   };
   const navigate = useNavigate();
 
