@@ -41,13 +41,11 @@ export default function PatientChatRoom() {
         headers: {
           "Content-Type": "application/json",
         },
-        // body: JSON.stringify({
-        //   question: inputValue,
-        // }),
         
         body: JSON.stringify({
           patient,
           question: inputValue,
+          history: messages,
         }),
       });
 

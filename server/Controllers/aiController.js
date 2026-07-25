@@ -2,13 +2,18 @@ const ai = require("../config/gemini");
 
 const chatWithPatient = async (req, res) => {
   try {
-    const { patient, question } = req.body;
+    const { patient, question, history } = req.body;
     if (!patient) {
       return res.status(400).json({
         success: false,
         message: "Patient data not received.",
       });
     }
+
+    const conversation = history
+      .map((msg) => `${msg.sender}: ${msg.text}`)
+      .join("\n");
+
 
     const prompt = `
 You are roleplaying as a patient.
@@ -18,14 +23,17 @@ Name: ${patient.name}
 Age: ${patient.age}
 Chief Complaint: ${patient.complaint}
 
-The doctor asks:
-"${question}"
+Conversation so far:
+${conversation}
+
+Doctor's latest question:
+${question}
 
 Instructions:
-- Reply ONLY as the patient.
-- Keep your answer short (1-3 sentences).
-- Do NOT reveal the diagnosis.
-- Answer only what the doctor asked.
+- Reply only as the patient.
+- Stay consistent with your previous answers.
+- Never reveal the diagnosis.
+- Keep your reply short (1-3 sentences).
 `;
 
     const response = await ai.models.generateContent({
