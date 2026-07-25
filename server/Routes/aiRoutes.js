@@ -9,8 +9,8 @@
 const express = require("express");
 const router = express.Router();
 
-const { testAI } = require("../Controllers/aiController");
+const { chatWithPatient } = require("../Controllers/aiController");
 
-router.get("/test", testAI);
+router.post("/chat", chatWithPatient);
 
 module.exports = router;

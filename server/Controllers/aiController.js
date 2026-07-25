@@ -1,32 +1,47 @@
 const ai = require("../config/gemini");
 
-const testAI = async (req, res) => {
+const chatWithPatient = async (req, res) => {
   try {
-    // const response = await ai.models.generateContent({
-    //   model: "models/gemini-flash-latest",
-    //   contents: "Say hello",
-    // });
+    const { patient, question } = req.body;
 
-    // res.json(response);
+    const prompt = `
+You are roleplaying as a patient.
+
+Patient Details:
+Name: ${patient.name}
+Age: ${patient.age}
+Chief Complaint: ${patient.complaint}
+
+The doctor asks:
+"${question}"
+
+Instructions:
+- Reply ONLY as the patient.
+- Keep your answer short (1-3 sentences).
+- Do NOT reveal the diagnosis.
+- Answer only what the doctor asked.
+`;
+
     const response = await ai.models.generateContent({
       model: "models/gemini-flash-latest",
-      contents: "Say hello to Med-Diagnose.",
+      contents: prompt,
     });
 
     res.json({
       success: true,
-      message: response.text,
+      reply: response.text,
     });
+
   } catch (error) {
     console.log(error);
 
     res.status(500).json({
       success: false,
-      status: error.status,
       message: error.message,
-      details: error,
     });
   }
 };
 
-module.exports = { testAI };
+module.exports = {
+  chatWithPatient,
+};
