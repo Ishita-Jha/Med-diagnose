@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const { generatePatient } = require("../Controllers/patientController");
+const { getRandomPatient } = require("../Controllers/patientController");
 
-router.get("/generate", generatePatient);
+router.get("/random", getRandomPatient);
 
 module.exports = router;

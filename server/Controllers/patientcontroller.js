@@ -1,23 +1,16 @@
-const generatePatient = (req, res) => {
-  const patient = {
-    name: "Rahul Sharma",
-    age: 52,
-    gender: "Male",
-    chiefComplaint: "Chest pain for 2 hours",
-    history: "Known diabetic and smoker",
-    vitals: {
-      bloodPressure: "150/90 mmHg",
-      pulse: "108 bpm",
-      temperature: "98.6°F",
-    },
-  };
+const patients = require("../data/patients");
 
-  res.status(200).json({
+const getRandomPatient = (req, res) => {
+  const random =
+    patients[Math.floor(Math.random() * patients.length)];
+
+  res.json({
     success: true,
-    patient,
+    patient: random,
   });
 };
 
 module.exports = {
-  generatePatient,
+  getRandomPatient,
+  
 };
