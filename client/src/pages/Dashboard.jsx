@@ -27,12 +27,16 @@ function Dashboard() {
     const navigate = useNavigate();
     const startNewCase = async () => {
         try {
-            const response = await API.get("/api/patient/random");
+            const response = await API.post("/api/ai/generate-patient");
+
+            console.log(response.data);
 
             localStorage.setItem(
                 "currentPatient",
                 JSON.stringify(response.data.patient)
             );
+
+            console.log(localStorage.getItem("currentPatient"));
 
             localStorage.setItem("caseStartTime", Date.now());
 

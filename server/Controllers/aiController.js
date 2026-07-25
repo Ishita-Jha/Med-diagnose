@@ -95,7 +95,63 @@ Do not mention any diagnosis.
   }
 };
 
+const generatePatient = async (req, res) => {
+  try {
+    const prompt = `
+Generate ONE realistic emergency department patient.
+
+Return ONLY valid JSON.
+
+{
+  "name": "",
+  "age": 0,
+  "gender": "",
+  "chiefComplaint": "",
+  "history": "",
+  "diagnosis": "",
+  "vitals": {
+    "bp": "",
+    "hr": "",
+    "rr": "",
+    "temp": "",
+    "spo2": ""
+  }
+}
+
+Rules:
+- Age between 18 and 80
+- Random gender
+- Common emergency complaint
+- Realistic medical history
+- Hidden diagnosis
+- Do not include markdown
+- Return JSON only
+`;
+
+    const response = await ai.models.generateContent({
+      model: "models/gemini-flash-latest",
+      contents: prompt,
+    });
+
+    const patient = JSON.parse(response.text);
+
+    res.json({
+      success: true,
+      patient,
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   chatWithPatient,
   startConversation,
+  generatePatient,
 };
