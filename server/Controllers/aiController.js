@@ -3,6 +3,12 @@ const ai = require("../config/gemini");
 const chatWithPatient = async (req, res) => {
   try {
     const { patient, question } = req.body;
+    if (!patient) {
+      return res.status(400).json({
+        success: false,
+        message: "Patient data not received.",
+      });
+    }
 
     const prompt = `
 You are roleplaying as a patient.
