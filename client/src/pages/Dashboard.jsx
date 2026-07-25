@@ -27,7 +27,7 @@ function Dashboard() {
     const navigate = useNavigate();
     const startNewCase = async () => {
         try {
-            const response = await API.get("/api/patient/generate");
+            const response = await API.get("/api/patient/random");
 
             localStorage.setItem(
                 "currentPatient",

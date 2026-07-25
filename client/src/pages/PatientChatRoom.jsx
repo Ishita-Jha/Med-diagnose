@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import Timer from "../components/Timer.jsx";
 
 export default function PatientChatRoom() {
-  const [patientProfile, setPatientProfile] = useState(null);
+  const [patientProfile, setPatientProfile] = useState(() => {
+    return JSON.parse(localStorage.getItem("currentPatient"));
+  });
 
   const [messages, setMessages] = useState([
     { id: 1, sender: 'patient', text: "Hello doctor. I really don't feel well. My chest hurts so much when I try to take a deep breath." }
@@ -35,13 +37,14 @@ export default function PatientChatRoom() {
 
     try {
       const patient = JSON.parse(localStorage.getItem("currentPatient"));
+      console.log(patient);
 
       const response = await fetch("http://localhost:3000/api/ai/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        
+
         body: JSON.stringify({
           patient,
           question: inputValue,
