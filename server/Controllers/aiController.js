@@ -58,6 +58,44 @@ Instructions:
   }
 };
 
+
+const startConversation = async (req, res) => {
+  try {
+    const { patient } = req.body;
+
+    const prompt = `
+You are roleplaying as a patient.
+
+Patient Details:
+Name: ${patient.name}
+Age: ${patient.age}
+Gender: ${patient.gender}
+Chief Complaint: ${patient.chiefComplaint}
+History: ${patient.history}
+
+Introduce yourself naturally as a patient who has just entered the emergency department.
+Speak in 1-2 short sentences.
+Do not mention any diagnosis.
+`;
+
+    const response = await ai.models.generateContent({
+      model: "models/gemini-flash-latest",
+      contents: prompt,
+    });
+
+    res.json({
+      success: true,
+      reply: response.text,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   chatWithPatient,
+  startConversation,
 };
