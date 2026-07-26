@@ -22,7 +22,7 @@ Patient Details:
 Name: ${patient.name}
 Age: ${patient.age}
 Gender: ${patient.gender}
-Chief Complaint: ${patient.chiefcomplaint}
+Chief Complaint: ${patient.chiefComplaint}
 History: ${patient.history}
 
 Conversation so far:
@@ -48,7 +48,9 @@ Instructions:
       reply: response.text,
     });
 
-  } catch (error) {
+  }
+  catch (error) {
+    console.log("CHAT ERROR:");
     console.log(error);
 
     res.status(500).json({
@@ -87,7 +89,11 @@ Do not mention any diagnosis.
       success: true,
       reply: response.text,
     });
-  } catch (error) {
+  }
+  catch (error) {
+    console.log("START CONVERSATION ERROR:");
+    console.log(error);
+
     res.status(500).json({
       success: false,
       message: error.message,

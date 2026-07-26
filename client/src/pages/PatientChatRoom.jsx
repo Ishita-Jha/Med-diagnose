@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Timer from "../components/Timer.jsx";
 
 export default function PatientChatRoom() {
+  const [loading, setLoading] = useState(true);
   const [patientProfile, setPatientProfile] = useState(null);
 
   const [messages, setMessages] = useState([]);
@@ -16,15 +17,61 @@ export default function PatientChatRoom() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // useEffect(() => {
+  //   const loadConversation = async () => {
+  //     const storedPatient = localStorage.getItem("currentPatient");
+
+  //     if (!storedPatient) return;
+
+  //     const patient = JSON.parse(storedPatient);
+
+  //     setPatientProfile(patient);
+
+  //     const response = await fetch("http://localhost:3000/api/ai/start", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ patient }),
+  //     });
+
+  //     const data = await response.json();
+
+  //     setMessages([
+  //       {
+  //         id: Date.now(),
+  //         sender: "patient",
+  //         text: data.reply,
+  //       },
+  //     ]);
+  //   };
+
+  //   loadConversation();
+  // }, []);
   useEffect(() => {
-    const loadConversation = async () => {
-      const storedPatient = localStorage.getItem("currentPatient");
+  const loadConversation = async () => {
+    try {
+      setLoading(true);
 
-      if (!storedPatient) return;
+      console.log("Generating patient...");
 
-      const patient = JSON.parse(storedPatient);
+      const patientResponse = await fetch("http://localhost:3000/api/ai/generate-patient", {
+        method: "POST",
+      });
+
+      console.log("Generate Patient Status:", patientResponse.status);
+
+      const patientData = await patientResponse.json();
+      console.log("Patient Data:", patientData);
+
+      const patient = patientData.patient;
+
+      localStorage.setItem("currentPatient", JSON.stringify(patient));
+      localStorage.setItem("caseStartTime", Date.now());
 
       setPatientProfile(patient);
+
+      console.log("Starting conversation...");
 
       const response = await fetch("http://localhost:3000/api/ai/start", {
         method: "POST",
@@ -34,7 +81,10 @@ export default function PatientChatRoom() {
         body: JSON.stringify({ patient }),
       });
 
+      console.log("Start Conversation Status:", response.status);
+
       const data = await response.json();
+      console.log("Start Conversation Data:", data);
 
       setMessages([
         {
@@ -43,10 +93,15 @@ export default function PatientChatRoom() {
           text: data.reply,
         },
       ]);
-    };
+    } catch (error) {
+      console.error("Load Conversation Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    loadConversation();
-  }, []);
+  loadConversation();
+}, []);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -69,7 +124,7 @@ export default function PatientChatRoom() {
         body: JSON.stringify({
           patient,
           question: inputValue,
-          history: [messages, userMessage],
+          history: [...messages, userMessage],
         }),
       });
 
@@ -88,6 +143,22 @@ export default function PatientChatRoom() {
     }
   };
   const navigate = useNavigate();
+  if (loading) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "24px",
+          fontWeight: "bold",
+        }}
+      >
+        🩺 Generating AI Patient...
+      </div>
+    );
+  }
 
   return (
     <div className="chatContainer">

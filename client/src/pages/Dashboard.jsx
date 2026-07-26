@@ -25,27 +25,34 @@ function Dashboard() {
     const [b_score, setb_score] = useState(97)
     const [c_level, setc_level] = useState("Beginner")
     const navigate = useNavigate();
-    const startNewCase = async () => {
-        try {
-            const response = await API.post("/api/ai/generate-patient");
+    // const startNewCase = async () => {
+    //     try {
+    //         const response = await API.post("/api/ai/generate-patient");
 
-            console.log(response.data);
+    //         console.log(response.data);
 
-            localStorage.setItem(
-                "currentPatient",
-                JSON.stringify(response.data.patient)
-            );
+    //         localStorage.setItem(
+    //             "currentPatient",
+    //             JSON.stringify(response.data.patient)
+    //         );
 
-            console.log(localStorage.getItem("currentPatient"));
+    //         console.log(localStorage.getItem("currentPatient"));
 
-            localStorage.setItem("caseStartTime", Date.now());
+    //         localStorage.setItem("caseStartTime", Date.now());
 
-            navigate("/patient-chat");
+    //         navigate("/patient-chat");
 
-        } catch (error) {
-            console.error(error);
-        }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+    const startNewCase = () => {
+        localStorage.removeItem("currentPatient");
+        localStorage.removeItem("caseStartTime");
+
+        navigate("/patient-chat");
     };
+
     return (
         <div className="Dashboard">
             <Navbar />
