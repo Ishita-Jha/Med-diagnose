@@ -83,32 +83,14 @@ function SummaryPage() {
             <span>{ai.patientInfo}</span>
           </div>
 
-          {/* <div className="info-row">
-            <span>Age</span>
-            <span>29 Years</span>
-          </div>
-
-          <div className="info-row">
-            <span>Gender</span>
-            <span>Female</span>
-          </div>
-
-          <div className="info-row">
-            <span>Chief Complaint</span>
-            <span>Shortness of breath and chest pain</span>
-          </div>*/}
+         
         </div> 
 
           {/* Symptoms */}
           <div className="summary-card">
             <h2>📋 Symptoms Collected</h2>
 
-            {/* <ul>
-            <li>✔ Chest Pain</li>
-            <li>✔ Shortness of Breath</li>
-            <li>✔ Pain started 2 hours ago</li>
-            <li>✔ Recent Long-Haul Flight</li>
-          </ul> */}
+            
             <p>{ai.symptoms}</p>
           </div>
 
@@ -116,51 +98,25 @@ function SummaryPage() {
           <div className="summary-card">
             <h2>🧪 Tests Ordered</h2>
 
-            {/* <ul>
-            <li>✔ Complete Blood Count</li>
-            <li>✔ ECG</li>
-            <li>✔ Blood Sugar</li>
-          </ul> */}
-            <p>{ai.testOrdered}</p>
+            <p>{ai.testsOrdered}</p>
           </div>
 
           {/* Lab Findings */}
           <div className="summary-card">
             <h2>📄 Laboratory Findings</h2>
 
-            {/* <div className="info-row">
-            <span>Hemoglobin</span>
-            <span>13.2 g/dL (Normal)</span>
-          </div>
-
-          <div className="info-row">
-            <span>WBC</span>
-            <span>7500 /µL (Normal)</span>
-          </div>
-
-          <div className="info-row">
-            <span>Heart Rate</span>
-            <span>92 bpm</span>
-          </div>
-
-          <div className="info-row">
-            <span>Blood Sugar</span>
-            <span>95 mg/dL (Normal)</span>
-          </div> */}
+            
             <p>{ai.labFindings}</p>
           </div>
 
 
           {/* Notes */}
-          <div className="summary-card">
+          {/* <div className="summary-card">
             <h2>📝 Clinical Notes</h2>
 
-            {/* <textarea
-            placeholder="Write your observations here..."
-            rows="5"
-          ></textarea> */}
+            
             <p>{ai.clinicalImpression}</p>
-          </div>
+          </div> */}
 
           <button
             className="continue-btn"

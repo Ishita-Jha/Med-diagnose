@@ -10,6 +10,7 @@ import LaboratoryResults from "./pages/LaboratoryResults"
 import SummaryPage from "./pages/SummaryPage";
 import DiagnosisPage from "./pages/DiagnosisPage";
 import LoadingResults from "./pages/LoadingResults";
+import EvaluationPage from "./pages/EvaluationPage";
 import { Routes, Route} from "react-router-dom";
 
 
@@ -35,6 +36,8 @@ function App() {
       <Route path="/diagnosis" element={<DiagnosisPage />} />
 
       <Route path="/loading-results" element={<LoadingResults/>} />
+
+      <Route path="/evaluation" element={<EvaluationPage />} />
     </Routes>
   );
 }

@@ -276,7 +276,6 @@ Return ONLY valid JSON.
     "symptoms": "...",
     "testsOrdered": "...",
     "labFindings": "...",
-    "clinicalImpression": "..."
   }
 }
 `;
@@ -309,10 +308,83 @@ Return ONLY valid JSON.
   }
 };
 
+const evaluateCase = async (req, res) => {
+  try {
+
+    const {
+      patient,
+      reports,
+      diagnosis,
+      treatment,
+      confidence
+    } = req.body;
+
+    const prompt = `
+You are an experienced emergency physician.
+
+True Diagnosis:
+${patient.diagnosis}
+
+Student Diagnosis:
+${diagnosis}
+
+Student Treatment:
+${treatment}
+
+Confidence:
+${confidence}
+
+Laboratory Reports:
+${JSON.stringify(reports)}
+
+Evaluate the student's performance.
+
+Return ONLY valid JSON.
+
+{
+  "score": 0,
+  "diagnosisCorrect": true,
+  "feedback": "",
+  "strengths": "",
+  "mistakes": "",
+  "idealDiagnosis": "",
+  "idealTreatment": ""
+}
+`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: prompt,
+    });
+
+    let text = response.text;
+
+    text = text
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+
+    const result = JSON.parse(text);
+
+    res.json(result);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+};
+
 module.exports = {
   chatWithPatient,
   startConversation,
   generatePatient,
   generateTestResult,
   generateSummary,
+  evaluateCase,
 };
