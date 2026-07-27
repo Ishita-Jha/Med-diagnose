@@ -13,7 +13,7 @@ const OrderedTest = () => {
     const selectedTests =
         JSON.parse(localStorage.getItem("selectedTests")) || [];
     const [status, SetStatus] = useState("Pending")
-    const [reports, setReports] = useState([]);
+    // const [reports, setReports] = useState([]);
     const [loading, setLoading] = useState(false);
     const generateResults = async () => {
         try {
@@ -36,21 +36,33 @@ const OrderedTest = () => {
                 }
             );
 
-            // const data = await response.json();
 
-            // setReports(data.reports);
-
-            // SetStatus("Completed");
             const data = await response.json();
 
             console.log("Backend Response:", data);
 
+            // if (response.ok && data.reports) {
+            //     setReports(data.reports);
+            //     SetStatus("Completed");
+            // } else {
+            //     console.error("Backend Error:", data.message || data);
+            //     alert(data.message || "Failed to generate reports");
+            // }
             if (response.ok && data.reports) {
-                setReports(data.reports);
+
+                localStorage.setItem(
+                    "reports",
+                    JSON.stringify(data.reports)
+                );
+
                 SetStatus("Completed");
+
+                navigate("/loading-results");
+
             } else {
-                console.error("Backend Error:", data.message || data);
+
                 alert(data.message || "Failed to generate reports");
+
             }
 
         } catch (error) {
@@ -96,7 +108,7 @@ const OrderedTest = () => {
             >
                 {loading ? "Generating..." : "Generate Results"}
             </button>
-            <div className="reports">
+            {/* <div className="reports">
 
                 {
                     reports?.map((report, index) => (
@@ -112,7 +124,7 @@ const OrderedTest = () => {
                     ))
                 }
 
-            </div>
+            </div> */}
         </div>
     )
 }

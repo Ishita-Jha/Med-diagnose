@@ -1,6 +1,7 @@
 const { GoogleGenAI } = require("@google/genai");
 require("dotenv").config();
-console.log("API Key starts with:", process.env.GEMINI_API_KEY?.slice(0, 10));
+
+console.log("API Key:", process.env.GEMINI_API_KEY.slice(0,10));
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
@@ -8,11 +9,12 @@ const ai = new GoogleGenAI({
 
 async function test() {
   try {
-    const models = await ai.models.list();
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: "Say hello",
+    });
 
-    for (const model of models) {
-      console.log(model.name);
-    }
+    console.log(response.text);
   } catch (err) {
     console.error(err);
   }

@@ -4,9 +4,10 @@ import Timer from "../components/Timer.jsx";
 
 export default function LaboratoryResults() {
   const navigate = useNavigate();
+  const reports = JSON.parse(localStorage.getItem("reports")) || [];
   return (
     <div className="lab-page">
-      <Timer/>
+      <Timer />
       <div className="lab-container">
 
         <h1>Laboratory Results</h1>
@@ -20,61 +21,22 @@ export default function LaboratoryResults() {
           />
         </div>
 
-        {/* CBC */}
-        <div className="result-card">
-          <h2>🩸 Complete Blood Count</h2>
+        {
+          reports.map((report, index) => (
 
-          <div className="row">
-            <span>Hemoglobin</span>
-            <span>13.2 g/dL</span>
-            <span className="normal">Normal</span>
-          </div>
+            <div className="result-card" key={index}>
 
-          <div className="row">
-            <span>WBC</span>
-            <span>7500 /µL</span>
-            <span className="normal">Normal</span>
-          </div>
+              <h2>{report.test}</h2>
 
-          <div className="row">
-            <span>Platelets</span>
-            <span>2.6 Lakh</span>
-            <span className="normal">Normal</span>
-          </div>
-        </div>
+              <div className="row">
+                <span>Result</span>
+                <span>{report.result}</span>
+              </div>
 
-        {/* ECG */}
+            </div>
 
-        <div className="result-card">
-          <h2>❤️ ECG</h2>
-
-          <div className="row">
-            <span>Heart Rate</span>
-            <span>92 bpm</span>
-          </div>
-
-          <div className="row">
-            <span>Rhythm</span>
-            <span>Normal Sinus Rhythm</span>
-          </div>
-
-          <div className="row">
-            <span>Interpretation</span>
-            <span>Normal ECG</span>
-          </div>
-        </div>
-
-        {/* Blood Sugar */}
-
-        <div className="result-card">
-          <h2>🧪 Blood Sugar</h2>
-
-          <div className="row">
-            <span>Fasting Blood Sugar</span>
-            <span>95 mg/dL</span>
-            <span className="normal">Normal</span>
-          </div>
-        </div>
+          ))
+        }
 
         <button
           className="continue-btn"
