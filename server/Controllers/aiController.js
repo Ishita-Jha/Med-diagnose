@@ -156,8 +156,81 @@ Rules:
   }
 };
 
+const generateTestResult = async (req, res) => {
+  try {
+
+    const { patient, tests } = req.body;
+
+    const prompt = `
+You are a hospital laboratory.
+
+Patient Details:
+Name: ${patient.name}
+Age: ${patient.age}
+Gender: ${patient.gender}
+
+Chief Complaint:
+${patient.chiefComplaint}
+
+Medical History:
+${patient.history}
+
+Hidden Diagnosis:
+${patient.diagnosis}
+
+Ordered Tests:
+${tests.join(", ")}
+
+Generate realistic reports ONLY for the ordered tests.
+
+Return ONLY valid JSON.
+
+Example:
+
+{
+  "reports":[
+    {
+      "test":"ECG",
+      "result":"Sinus tachycardia..."
+    },
+    {
+      "test":"Troponin-I",
+      "result":"Positive"
+    }
+  ]
+}
+
+Do not reveal the diagnosis.
+`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-pro",
+      contents: prompt,
+    });
+
+    // const reports = JSON.parse(response.text);
+    console.log("Gemini Response:");
+    console.log(response.text);
+
+    const reports = JSON.parse(response.text);
+
+    res.json(reports);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+
+  }
+};
+
 module.exports = {
   chatWithPatient,
   startConversation,
   generatePatient,
+  generateTestResult,
 };
