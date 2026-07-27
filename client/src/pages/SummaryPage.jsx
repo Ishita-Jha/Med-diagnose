@@ -63,6 +63,7 @@ function SummaryPage() {
   if (loading) {
     return <h2>Generating AI Summary...</h2>;
   }
+  const ai = summary.summary;
   return (
     <div className="summary-page">
       <Timer />
@@ -79,10 +80,10 @@ function SummaryPage() {
 
           <div className="info-row">
             <span>Name</span>
-            <span>Sarah Jenkins</span>
+            <span>{ai.patientInfo}</span>
           </div>
 
-          <div className="info-row">
+          {/* <div className="info-row">
             <span>Age</span>
             <span>29 Years</span>
           </div>
@@ -95,37 +96,39 @@ function SummaryPage() {
           <div className="info-row">
             <span>Chief Complaint</span>
             <span>Shortness of breath and chest pain</span>
-          </div>
-        </div>
+          </div>*/}
+        </div> 
 
-        {/* Symptoms */}
-        <div className="summary-card">
-          <h2>📋 Symptoms Collected</h2>
+          {/* Symptoms */}
+          <div className="summary-card">
+            <h2>📋 Symptoms Collected</h2>
 
-          <ul>
+            {/* <ul>
             <li>✔ Chest Pain</li>
             <li>✔ Shortness of Breath</li>
             <li>✔ Pain started 2 hours ago</li>
             <li>✔ Recent Long-Haul Flight</li>
-          </ul>
-        </div>
+          </ul> */}
+            <p>{ai.symptoms}</p>
+          </div>
 
-        {/* Tests Ordered */}
-        <div className="summary-card">
-          <h2>🧪 Tests Ordered</h2>
+          {/* Tests Ordered */}
+          <div className="summary-card">
+            <h2>🧪 Tests Ordered</h2>
 
-          <ul>
+            {/* <ul>
             <li>✔ Complete Blood Count</li>
             <li>✔ ECG</li>
             <li>✔ Blood Sugar</li>
-          </ul>
-        </div>
+          </ul> */}
+            <p>{ai.testOrdered}</p>
+          </div>
 
-        {/* Lab Findings */}
-        <div className="summary-card">
-          <h2>📄 Laboratory Findings</h2>
+          {/* Lab Findings */}
+          <div className="summary-card">
+            <h2>📄 Laboratory Findings</h2>
 
-          <div className="info-row">
+            {/* <div className="info-row">
             <span>Hemoglobin</span>
             <span>13.2 g/dL (Normal)</span>
           </div>
@@ -143,29 +146,31 @@ function SummaryPage() {
           <div className="info-row">
             <span>Blood Sugar</span>
             <span>95 mg/dL (Normal)</span>
+          </div> */}
+            <p>{ai.labFindings}</p>
           </div>
-        </div>
 
 
-        {/* Notes */}
-        <div className="summary-card">
-          <h2>📝 Clinical Notes</h2>
+          {/* Notes */}
+          <div className="summary-card">
+            <h2>📝 Clinical Notes</h2>
 
-          <textarea
+            {/* <textarea
             placeholder="Write your observations here..."
             rows="5"
-          ></textarea>
-        </div>
+          ></textarea> */}
+            <p>{ai.clinicalImpression}</p>
+          </div>
 
-        <button
-          className="continue-btn"
-          onClick={() => navigate("/diagnosis")}
-        >
-          Continue to Diagnosis
-        </button>
+          <button
+            className="continue-btn"
+            onClick={() => navigate("/diagnosis")}
+          >
+            Continue to Diagnosis
+          </button>
+        </div>
       </div>
-    </div>
-  );
+      );
 }
 
-export default SummaryPage;
+      export default SummaryPage;

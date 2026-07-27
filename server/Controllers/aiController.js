@@ -210,9 +210,22 @@ Do not reveal the diagnosis.
 
     // const reports = JSON.parse(response.text);
     console.log("Gemini Response:");
-    console.log(response.text);
+    // console.log(response.text);
 
-    const reports = JSON.parse(response.text);
+    // const reports = JSON.parse(response.text);
+
+    // res.json(reports);
+    let text = response.text;
+
+    text = text
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+
+    console.log("Gemini Response:");
+    console.log(text);
+
+    const reports = JSON.parse(text);
 
     res.json(reports);
 
@@ -284,8 +297,6 @@ Return ONLY valid JSON.
 
     res.json(result);
 
-    res.json(result);
-
   } catch (error) {
 
     console.log(error);
@@ -303,5 +314,5 @@ module.exports = {
   startConversation,
   generatePatient,
   generateTestResult,
-  generateSummary
+  generateSummary,
 };
