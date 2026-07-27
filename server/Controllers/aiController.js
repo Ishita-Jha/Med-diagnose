@@ -228,9 +228,80 @@ Do not reveal the diagnosis.
   }
 };
 
+const generateSummary = async (req, res) => {
+  try {
+
+    const { patient, tests, reports } = req.body;
+
+    const prompt = `
+You are an experienced physician.
+
+Create a concise case summary.
+
+Patient:
+Name: ${patient.name}
+Age: ${patient.age}
+Gender: ${patient.gender}
+
+Chief Complaint:
+${patient.chiefComplaint}
+
+History:
+${patient.history}
+
+Ordered Tests:
+${tests.join(", ")}
+
+Laboratory Reports:
+${JSON.stringify(reports)}
+
+Return ONLY valid JSON.
+
+{
+  "summary": {
+    "patientInfo": "...",
+    "symptoms": "...",
+    "testsOrdered": "...",
+    "labFindings": "...",
+    "clinicalImpression": "..."
+  }
+}
+`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: prompt,
+    });
+
+    let text = response.text;
+
+    // Remove ```json and ```
+    text = text.replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+
+    const result = JSON.parse(text);
+
+    res.json(result);
+
+    res.json(result);
+
+  } catch (error) {
+
+    console.log(error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+};
+
 module.exports = {
   chatWithPatient,
   startConversation,
   generatePatient,
   generateTestResult,
+  generateSummary
 };

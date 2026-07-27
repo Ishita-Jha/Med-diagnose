@@ -1,12 +1,71 @@
+import { useState, useEffect } from "react";
 import "../styles/SummaryPage.css";
 import { useNavigate } from "react-router-dom";
 import Timer from "../components/Timer.jsx";
 
 function SummaryPage() {
   const navigate = useNavigate();
+  const [summary, setSummary] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+
+    const loadSummary = async () => {
+
+      try {
+
+        const patient =
+          JSON.parse(localStorage.getItem("currentPatient"));
+
+        const reports =
+          JSON.parse(localStorage.getItem("reports")) || [];
+
+        const tests =
+          JSON.parse(localStorage.getItem("selectedTests")) || [];
+
+        const response = await fetch(
+          "http://localhost:3000/api/ai/generate-summary",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              patient,
+              reports,
+              tests,
+            }),
+          }
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+        setSummary(data);
+
+      } catch (err) {
+
+        console.log(err);
+
+      } finally {
+
+        setLoading(false);
+
+      }
+
+    };
+
+    loadSummary();
+
+  }, []);
+
+  if (loading) {
+    return <h2>Generating AI Summary...</h2>;
+  }
   return (
     <div className="summary-page">
-      <Timer/>
+      <Timer />
       <div className="summary-container">
 
         <h1>Case Summary</h1>
