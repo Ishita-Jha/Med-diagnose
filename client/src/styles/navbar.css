@@ -6,13 +6,19 @@
     background: white;
 }
 .Left-Navbar h1{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     color: black;
     font-size: 50px;
     margin-bottom: 6px;
+    
 }
 .Left-Navbar p{
-    color: gray;
-    font-size: 15px;
+    color: rgb(52, 50, 50);
+    font-size: 20px;
+    margin-top:20px;
 }
 .Right-Navbar {
     display: flex;

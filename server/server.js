@@ -30,9 +30,7 @@ app.get("/api/test", (req, res) => {
 });
 
 // 1. ADD THIS NEW ROUTE HANDLER HERE:
-app.get("/api/test", (req, res) => {
-    res.json({ message: "Hello from the backend test endpoint!" });
-});
+
 
 const PORT = process.env.PORT || 5000;
 
