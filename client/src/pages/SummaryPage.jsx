@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/SummaryPage.css";
 import { useNavigate } from "react-router-dom";
-import Timer from "../components/Timer.jsx";
+// import Timer from "../components/Timer.jsx";
 
 function SummaryPage() {
   const navigate = useNavigate();
@@ -66,7 +66,7 @@ function SummaryPage() {
   const ai = summary.summary;
   return (
     <div className="summary-page">
-      <Timer />
+      {/* <Timer /> */}
       <div className="summary-container">
 
         <h1>Case Summary</h1>
