@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from "react";
 import "../styles/dashboard.css";
 import Navbar from "../components/navbar";
@@ -60,7 +59,7 @@ function Dashboard() {
                         </button>
                     </div>
 
-                    <div className="feature-card" onClick={() => navigate("/profile")}>
+                    {/* <div className="feature-card" onClick={() => navigate("/profile")}>
                         <div className="icon-wrapper">
                             <FaUserCircle className="feature-icon" />
                         </div>
@@ -71,7 +70,7 @@ function Dashboard() {
                         <button className="card-btn">
                             Open Profile →
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
