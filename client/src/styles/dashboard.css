@@ -1,19 +1,23 @@
-/* Base container layout */
+
 .Dashboard-container {
     background-color: #f8fafc;
     min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     padding-bottom: 60px;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Outer layout adjustment (No white background or border-radius wrapper anymore) */
+
 .Dashboard {
-    max-width: 600px; /* Perfectly frames the vertical flow */
+    max-width: 600px; 
     margin: 60px auto 40px auto;
     padding: 0 20px;
 }
 
-/* Hero Section */
+
 .hero-section {
     text-align: center;
     margin-bottom: 40px;
@@ -42,7 +46,7 @@
     line-height: 1.6;
 }
 
-/* Features Stack */
+
 .features {
     display: flex;
     flex-direction: column;
@@ -50,7 +54,7 @@
     gap: 24px;
 }
 
-/* Premium card styling acting as the prominent components */
+
 .feature-card {
     width: 100%;
     box-sizing: border-box;
@@ -88,7 +92,7 @@
     max-width: 380px;
 }
 
-/* Icon circular backing */
+
 .icon-wrapper {
     background-color: #eff6ff;
     padding: 16px;
@@ -104,7 +108,7 @@
     color: #2563eb;
 }
 
-/* Clean, blue primary buttons for both options */
+
 .card-btn {
     background-color: #2563eb;
     color: white;
@@ -128,7 +132,7 @@
     transform: scale(0.98);
 }
 
-/* Subtle hand wave movement */
+
 .wave {
     display: inline-block;
     animation: wave-animation 2.5s infinite;
@@ -144,4 +148,6 @@
     50% { transform: rotate(10.0deg) }
     60% { transform: rotate( 0.0deg) }
     100% { transform: rotate( 0.0deg) }
-}
+} 
+
+
