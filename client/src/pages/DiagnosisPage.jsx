@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/DiagnosisPage.css";
-import Timer from "../components/Timer.jsx";
+// import Timer from "../components/Timer.jsx";
 function DiagnosisPage() {
   const navigate = useNavigate();
 
@@ -50,7 +50,7 @@ function DiagnosisPage() {
 
   return (
     <div className="diagnosis-page">
-      <Timer />
+      {/* <Timer /> */}
       <div className="diagnosis-container">
 
         <h1>Final Diagnosis</h1>

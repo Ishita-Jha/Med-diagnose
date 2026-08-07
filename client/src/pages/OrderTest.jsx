@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../styles/orderTest.css"
 import { useNavigate } from "react-router-dom";
-import Timer from "../components/Timer.jsx";
+
 
 const OrderTest = () => {
     const navigate = useNavigate();
@@ -57,7 +57,7 @@ const OrderTest = () => {
 
     return (
         <div className="orderTest-list">
-            <Timer/>
+            
             <div className="Header">
                 <h2> Order Test</h2>
                 <p>Select tests to order for this patient</p>

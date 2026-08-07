@@ -2,10 +2,19 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/EvaluationPage.css";
+import Timer from "../components/Timer";
 
 function EvaluationPage() {
     const navigate = useNavigate();
     const [evaluation, setEvaluation] = useState(null);
+    useEffect(() => {
+        const start = Number(localStorage.getItem("caseStartTime"));
+
+        if (start && !localStorage.getItem("caseTime")) {
+            const totalSeconds = Math.floor((Date.now() - start) / 1000);
+            localStorage.setItem("caseTime", totalSeconds);
+        }
+    }, []);
 
 
     useEffect(() => {
@@ -19,6 +28,7 @@ function EvaluationPage() {
 
     return (
         <div className="evaluation-page">
+            <Timer />
             <div className="evaluation-container">
 
                 <h1>🏆 AI Performance Evaluation</h1>
@@ -66,8 +76,10 @@ function EvaluationPage() {
                         localStorage.removeItem("reports");
                         localStorage.removeItem("selectedTests");
                         localStorage.removeItem("evaluation");
-                        localStorage.removeItem("caseStartTime");
 
+                        // Timer
+                        localStorage.removeItem("caseStartTime");
+                        localStorage.removeItem("caseTime");
                         navigate("/dashboard");
                     }}
                 >
