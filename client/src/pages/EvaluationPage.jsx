@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/EvaluationPage.css";
-import Timer from "../components/Timer";
+// import Timer from "../components/Timer";
 
 function EvaluationPage() {
     const navigate = useNavigate();
@@ -28,7 +28,7 @@ function EvaluationPage() {
 
     return (
         <div className="evaluation-page">
-            <Timer />
+            {/* <Timer /> */}
             <div className="evaluation-container">
 
                 <h1>🏆 AI Performance Evaluation</h1>
