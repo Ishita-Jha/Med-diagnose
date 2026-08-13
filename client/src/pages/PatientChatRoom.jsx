@@ -75,7 +75,7 @@ export default function PatientChatRoom() {
 
         console.log("Starting conversation...");
 
-        const response = await fetch("http://localhost:3000/api/ai/start", {
+        const response = await fetch("https://med-diagnose-backend.onrender.com/api/ai/start", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -117,7 +117,7 @@ export default function PatientChatRoom() {
       const patient = JSON.parse(localStorage.getItem("currentPatient"));
       console.log(patient);
 
-      const response = await fetch("http://localhost:3000/api/ai/chat", {
+      const response = await fetch("https://med-diagnose-backend.onrender.com/api/ai/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
