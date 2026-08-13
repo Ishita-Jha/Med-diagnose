@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/loadingResults.css";
+import "../styles/LoadingResults.css";
 
 const LoadingResults = () => {
   const navigate = useNavigate();
