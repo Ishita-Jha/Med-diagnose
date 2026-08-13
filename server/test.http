@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/ai/chat
+POST https://med-diagnose-backend.onrender.com/api/ai/chat
 Content-Type: application/json
 
 {

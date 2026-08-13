@@ -24,7 +24,7 @@ function SummaryPage() {
           JSON.parse(localStorage.getItem("selectedTests")) || [];
 
         const response = await fetch(
-          "http://localhost:3000/api/ai/generate-summary",
+          "https://med-diagnose-backend.onrender.com/api/ai/generate-summary",
           {
             method: "POST",
             headers: {
