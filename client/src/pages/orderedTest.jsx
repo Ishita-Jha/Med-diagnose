@@ -23,7 +23,7 @@ const OrderedTest = () => {
             const patient = JSON.parse(localStorage.getItem("currentPatient"));
 
             const response = await fetch(
-                "http://localhost:3000/api/ai/generate-test",
+                "https://med-diagnose-backend.onrender.com/api/ai/generate-test",
                 {
                     method: "POST",
                     headers: {

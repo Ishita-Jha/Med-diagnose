@@ -15,7 +15,7 @@ function DiagnosisPage() {
       const reports = JSON.parse(localStorage.getItem("reports")) || [];
 
       const response = await fetch(
-        "http://localhost:3000/api/ai/evaluate-case",
+        "https://med-diagnose-backend.onrender.com/api/ai/evaluate-case",
         {
           method: "POST",
           headers: {

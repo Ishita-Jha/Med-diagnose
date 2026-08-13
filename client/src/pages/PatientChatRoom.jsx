@@ -55,7 +55,7 @@ export default function PatientChatRoom() {
 
         console.log("Generating patient...");
 
-        const patientResponse = await fetch("http://localhost:3000/api/ai/generate-patient", {
+        const patientResponse = await fetch("https://med-diagnose-backend.onrender.com/api/ai/generate-patient", {
           method: "POST",
         });
 
