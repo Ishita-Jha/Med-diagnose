@@ -7,6 +7,7 @@ The platform simulates a patient-doctor interaction where users can communicate 
 
 Live Project:
 https://med-diagnose-jammxgzae-med-diagnose.vercel.app
+
 💻 Source Code
 
 GitHub Repository:
@@ -19,12 +20,15 @@ Provides different symptoms and clinical information.
 💬 Interactive Patient Conversation
 Allows users to communicate with the AI patient.
 Users can ask questions and collect relevant clinical information.
+
 🧪 Medical Test Simulation
 Users can request appropriate diagnostic tests.
 AI generates corresponding test results.
+
 🩺 Final Diagnosis
 Users submit their suspected diagnosis.
 A treatment plan and confidence level can also be provided.
+
 📊 AI-Based Performance Evaluation
 Evaluates the user's diagnostic performance.
 Provides feedback based on the diagnosis, treatment plan, questioning approach and clinical reasoning.
@@ -33,30 +37,45 @@ Provides feedback based on the diagnosis, treatment plan, questioning approach a
 🛠️ Technology Stack
 
 Frontend
+
 React.js
+
 Vite
+
 JavaScript
+
 HTML5
+
 CSS3
 
 Axios
+
 React Router
 
 Backend
+
 Node.js
+
 Express.js
 
 Database
+
 MongoDB
+
 Mongoose
 
 Artificial Intelligence
+
 Google Gemini API
 
 Deployment
+
 Frontend: Vercel
+
 Backend: Render
+
 Database: MongoDB Atlas
 
 📌 Disclaimer
+
 Med Diagnose is an educational simulation project intended for learning and practicing diagnostic reasoning. It is not intended to provide real medical diagnosis, treatment, or professional medical advice.
