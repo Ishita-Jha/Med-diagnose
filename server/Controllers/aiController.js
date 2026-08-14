@@ -10,7 +10,7 @@ const chatWithPatient = async (req, res) => {
       });
     }
 
-    const conversation = history
+    const conversation = (history || [])
       .map((msg) => `${msg.sender}: ${msg.text}`)
       .join("\n");
 
@@ -39,7 +39,7 @@ Instructions:
 `;
 
     const response = await ai.models.generateContent({
-      model: "models/gemini-flash-latest",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
 
@@ -81,7 +81,7 @@ Do not mention any diagnosis.
 `;
 
     const response = await ai.models.generateContent({
-      model: "models/gemini-flash-latest",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
 
@@ -135,7 +135,7 @@ Rules:
 `;
 
     const response = await ai.models.generateContent({
-      model: "models/gemini-flash-latest",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
 
@@ -204,7 +204,7 @@ Do not reveal the diagnosis.
 `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
 
@@ -281,7 +281,7 @@ Return ONLY valid JSON.
 `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
 
@@ -353,7 +353,7 @@ Return ONLY valid JSON.
 `;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
+      model: "gemini-2.5-flash",
       contents: prompt,
     });
 
