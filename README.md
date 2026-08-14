@@ -4,9 +4,11 @@ Med Diagnose is an AI-powered medical diagnosis simulation platform designed to 
 The platform simulates a patient-doctor interaction where users can communicate with an AI-generated patient, ask relevant questions, request medical tests, analyze the available information, provide a final diagnosis and treatment plan, and receive an AI-based evaluation of their performance.
 
 🚀 Live Application
+
 Live Project:
 https://med-diagnose-jammxgzae-med-diagnose.vercel.app
 💻 Source Code
+
 GitHub Repository:
 https://github.com/Ishita-Jha/Med-diagnose
 
@@ -29,6 +31,7 @@ Provides feedback based on the diagnosis, treatment plan, questioning approach a
 
 
 🛠️ Technology Stack
+
 Frontend
 React.js
 Vite
