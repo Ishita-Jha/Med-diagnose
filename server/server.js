@@ -29,6 +29,9 @@ app.get("/api/test", (req, res) => {
     });
 });
 
+app.get("/", (req, res) => {
+  res.send("Med Diagnose Backend is running!");
+});
 // 1. ADD THIS NEW ROUTE HANDLER HERE:
 
 
