@@ -6,7 +6,7 @@ The platform simulates a patient-doctor interaction where users can communicate 
 🚀 Live Application
 
 Live Project:
-https://med-diagnose-jammxgzae-med-diagnose.vercel.app
+https://med-diagnose-jade.vercel.app/
 
 💻 Source Code
 
